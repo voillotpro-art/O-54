@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Carte — Maison Aurèle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Marcellus&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --noir:#0d0c0a;--noir-2:#15130f;--crème:#f3ece0;--crème-2:#cfc6b6;
+  --or:#c9a44c;--or-clair:#e3c87f;
+  --display:'Cormorant Garamond',serif;--titre:'Marcellus',serif;--corps:'Jost',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--crème);font-family:var(--corps);font-weight:300;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.kicker{font-size:.72rem;letter-spacing:.42em;text-transform:uppercase;color:var(--or);font-weight:400}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.8rem clamp(1.5rem,5vw,5rem);background:rgba(13,12,10,.82);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,164,76,.15)}
+nav .logo{font-family:var(--titre);font-size:1.4rem;letter-spacing:.18em}
+nav .links{display:flex;gap:2.6rem;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase}
+nav .links a{opacity:.8;transition:opacity .3s}
+nav .links a:hover,nav .links a.active{opacity:1;color:var(--or-clair)}
+@media(max-width:760px){
+  nav{padding:1.2rem 1.3rem}
+  nav .links{gap:1.1rem;font-size:.6rem;letter-spacing:.12em}
+}
+
+.head{padding:clamp(8rem,18vh,12rem) clamp(1.5rem,5vw,5rem) clamp(3rem,7vh,5rem);text-align:center;border-bottom:1px solid rgba(201,164,76,.15)}
+.head h1{font-family:var(--display);font-weight:300;font-size:clamp(3rem,8vw,6rem);line-height:.95;margin-top:1.2rem}
+.head h1 em{font-style:italic;color:var(--or-clair)}
+.head p{color:var(--crème-2);max-width:46ch;margin:1.6rem auto 0}
+
+.menu-wrap{max-width:900px;margin:0 auto;padding:clamp(3rem,8vh,6rem) clamp(1.5rem,5vw,3rem)}
+.course{margin-bottom:clamp(3rem,7vh,5rem)}
+.course-head{display:flex;align-items:baseline;gap:1.4rem;margin-bottom:2.2rem}
+.course-head h2{font-family:var(--display);font-style:italic;font-weight:400;font-size:clamp(1.8rem,4vw,2.6rem);color:var(--or-clair);white-space:nowrap}
+.course-head .line{flex:1;height:1px;background:linear-gradient(90deg,var(--or),transparent)}
+.course-head .fr{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--crème-2)}
+
+.item{display:grid;grid-template-columns:1fr auto;gap:.6rem 1.6rem;padding:1.3rem 0;border-bottom:1px dotted rgba(207,198,182,.18)}
+.item:last-child{border-bottom:none}
+.item h3{font-family:var(--titre);font-size:1.25rem;font-weight:400;letter-spacing:.01em}
+.item .price{font-family:var(--display);font-size:1.5rem;color:var(--or);align-self:start}
+.item p{grid-column:1/2;color:var(--crème-2);font-size:.92rem;margin-top:.2rem}
+.item .tags{grid-column:1/2;margin-top:.5rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.item .tag{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--or);border:1px solid rgba(201,164,76,.35);padding:.2rem .6rem;border-radius:2px}
+
+.tasting{margin:0 auto clamp(3rem,7vh,5rem);max-width:900px;padding:clamp(2rem,5vw,3.2rem);background:var(--noir-2);border:1px solid rgba(201,164,76,.25);text-align:center}
+.tasting .kicker{display:block;margin-bottom:1rem}
+.tasting h2{font-family:var(--display);font-weight:300;font-size:clamp(1.8rem,4vw,2.8rem)}
+.tasting h2 em{font-style:italic;color:var(--or-clair)}
+.tasting .price-big{font-family:var(--display);font-size:clamp(2.4rem,6vw,4rem);color:var(--or);margin:1rem 0 .2rem}
+.tasting p{color:var(--crème-2);max-width:42ch;margin:0 auto}
+
+.cta{display:inline-flex;align-items:center;gap:.8rem;margin-top:1.8rem;padding:1rem 2.2rem;border:1px solid var(--or);font-size:.74rem;letter-spacing:.28em;text-transform:uppercase;color:var(--or-clair);background:transparent;cursor:pointer;transition:background .4s,color .4s}
+.cta:hover{background:var(--or);color:var(--noir)}
+
+footer{padding:clamp(3rem,7vh,5rem) clamp(1.5rem,5vw,5rem) 3rem;border-top:1px solid rgba(201,164,76,.18);text-align:center}
+footer .logo{font-family:var(--titre);font-size:1.6rem;letter-spacing:.16em}
+footer .tag{color:var(--or);font-family:var(--display);font-style:italic;font-size:1.1rem;margin-top:.4rem}
+footer .back{display:inline-block;margin-top:1.8rem;font-size:.74rem;letter-spacing:.24em;text-transform:uppercase;color:var(--crème-2);border-bottom:1px solid var(--or);padding-bottom:.3rem;transition:color .3s}
+footer .back:hover{color:var(--or-clair)}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="maison-aurele.html" class="logo">AURÈLE</a>
+  <div class="links">
+    <a href="maison-aurele.html#intro">Maison</a>
+    <a href="carte.html" class="active">Carte</a>
+    <a href="maison-aurele.html#footer">Visiter</a>
+    <a href="#">Réserver</a>
+  </div>
+</nav>
+
+<header class="head">
+  <span class="kicker">Menu de Saison · Printemps</span>
+  <h1>La <em>Carte</em></h1>
+  <p>Une cuisine au gré des arrivages, composée chaque matin selon le marché. Le Chef se réserve le droit d'adapter les plats à l'inspiration du jour.</p>
+</header>
+
+<main class="menu-wrap">
+
+  <!-- ENTRÉES -->
+  <section class="course reveal">
+    <div class="course-head"><h2>Entrées</h2><div class="line"></div><span class="fr">Pour Commencer</span></div>
+
+    <div class="item">
+      <h3>Saint-Jacques de Plongée</h3><span class="price">42</span>
+      <p>Noix snackées, beurre noisette au safran de Provence, pousses de cresson et fleur de sel.</p>
+      <div class="tags"><span class="tag">Signature</span></div>
+    </div>
+    <div class="item">
+      <h3>Velouté de Topinambour</h3><span class="price">26</span>
+      <p>Émulsion truffée, copeaux de noisette torréfiée et huile de ciboulette.</p>
+      <div class="tags"><span class="tag">Végétarien</span></div>
+    </div>
+    <div class="item">
+      <h3>Foie Gras de Canard Mi-Cuit</h3><span class="price">38</span>
+      <p>Chutney de figue au porto, brioche feuilletée maison et fleur de sel de Guérande.</p>
+    </div>
+    <div class="item">
+      <h3>Tartare de Bœuf au Couteau</h3><span class="price">32</span>
+      <p>Bœuf de race Aubrac, condiments à l'ancienne, jaune d'œuf confit et frites soufflées.</p>
+    </div>
+  </section>
+
+  <!-- PLATS -->
+  <section class="course reveal">
+    <div class="course-head"><h2>Plats</h2><div class="line"></div><span class="fr">Le Cœur du Repas</span></div>
+
+    <div class="item">
+      <h3>Canard de Challans</h3><span class="price">48</span>
+      <p>Magret rôti sur l'os, jus corsé au cassis, navets glacés et purée de céleri fumée.</p>
+      <div class="tags"><span class="tag">Signature</span></div>
+    </div>
+    <div class="item">
+      <h3>Turbot Rôti à l'Arête</h3><span class="price">54</span>
+      <p>Beurre blanc à l'oseille, asperges vertes des Landes et caviar d'Aquitaine.</p>
+    </div>
+    <div class="item">
+      <h3>Ris de Veau Croustillant</h3><span class="price">46</span>
+      <p>Sauce au vin jaune et morilles, écrasé de pomme de terre à la truffe.</p>
+    </div>
+    <div class="item">
+      <h3>Risotto aux Champignons des Bois</h3><span class="price">34</span>
+      <p>Carnaroli crémeux, parmesan 24 mois, girolles poêlées et huile de noisette.</p>
+      <div class="tags"><span class="tag">Végétarien</span></div>
+    </div>
+  </section>
+
+  <!-- DESSERTS -->
+  <section class="course reveal">
+    <div class="course-head"><h2>Desserts</h2><div class="line"></div><span class="fr">Pour Finir</span></div>
+
+    <div class="item">
+      <h3>Soufflé Grand Marnier</h3><span class="price">19</span>
+      <p>Soufflé aérien à l'orange amère, glace vanille de Madagascar et tuile dorée.</p>
+      <div class="tags"><span class="tag">Signature</span></div>
+    </div>
+    <div class="item">
+      <h3>Tarte au Citron de Menton</h3><span class="price">17</span>
+      <p>Crème citron, meringue flambée et sablé breton au beurre demi-sel.</p>
+    </div>
+    <div class="item">
+      <h3>Le Chocolat Grand Cru</h3><span class="price">18</span>
+      <p>Ganache 70 % du Pérou, croustillant praliné et sorbet cacao.</p>
+    </div>
+    <div class="item">
+      <h3>Sélection de Fromages Affinés</h3><span class="price">22</span>
+      <p>Cinq fromages des Maîtres affineurs, confiture de cerise noire et pain aux noix.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- MENU DÉGUSTATION -->
+<section class="tasting reveal">
+  <span class="kicker">L'Expérience Aurèle</span>
+  <h2>Le Menu <em>Dégustation</em></h2>
+  <div class="price-big">145</div>
+  <p>Sept services au gré de l'inspiration du Chef. Accord mets et vins disponible (+ 85).</p>
+  <a href="#" class="cta">Réserver une table</a>
+</section>
+
+<footer>
+  <div class="logo">Maison Aurèle</div>
+  <div class="tag">La table, comme une lumière.</div>
+  <br>
+  <a href="maison-aurele.html" class="back">← Retour à l'accueil</a>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
